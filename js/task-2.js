@@ -28,8 +28,19 @@ const images = [
   },
 ];
 
-const gallery = document.querySelector('.gallery');
-
+/*const galleryList = document.querySelector('.gallery');
 const markup = images.map(({ url, alt }) => `<li><img src="${url}" alt="${alt}" width="360" height="300" loading="lazy"></li>`).join('');
+gallery.insertAdjacentHTML("beforeend", markup);*/
 
-gallery.insertAdjacentHTML("beforeend", markup);
+ const galleryList = document.querySelector('.gallery');
+  images.forEach(image => {
+    const galleryItem = document.createElement('li');
+    galleryItem.classList.add('gallery-item');
+
+    const imgElement = document.createElement('img');
+    imgElement.src = image.url;
+    imgElement.alt = image.alt;
+
+    galleryItem.appendChild(imgElement);
+    galleryList.appendChild(galleryItem);
+  });
